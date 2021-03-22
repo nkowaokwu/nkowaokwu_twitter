@@ -1,0 +1,23 @@
+{
+  "name": "nkowaokwu_twitter",
+  "version": "0.0.0",
+  "description": "Twitter bot for @nkowaokwu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ijemmao/nkowaokwu_twitter.git"
+  },
+  "keywords": [
+    "twitter",
+    "bot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ijemmao/nkowaokwu_twitter/issues"
+  },
+  "homepage": "https://github.com/ijemmao/nkowaokwu_twitter#readme"
+}
