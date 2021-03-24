@@ -1,0 +1,38 @@
+name: Test Suite
+
+on: pull_request
+
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_IMAGE: igbo_api_server
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+        mongodb-version: [4.0, 4.2]
+      
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js @${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Log into Docker Account
+      run: echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+    - name: Run Igbo API Docker Instance
+      run: |
+        docker pull $DOCKER_USERNAME/$DOCKER_IMAGE
+        yarn start:docker -d
+    - name: Build Server
+      run: |
+        yarn install
+        yarn build
+    - name: Test Bot
+      run: yarn mocha

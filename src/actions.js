@@ -2,10 +2,13 @@ import urlencode from 'urlencode';
 import WordClass from './constants/WordClass';
 import { getRandomWord } from './API';
 
+const defaultTwitBot = {
+  post: () => {},
+};
 const NKOWAOKWU = 'https://nkowaokwu.com/word';
 
 /* Grabs a random word from the Igbo API and tweets it */
-export const tweetRandomWord = (twitBot) => async () => {
+export const tweetRandomWord = (twitBot = defaultTwitBot) => async () => {
   const word = await getRandomWord();
   const status = `
     Word of the day:
@@ -23,4 +26,5 @@ export const tweetRandomWord = (twitBot) => async () => {
     Help the community, drop an audio recording down below 👇🏾🎙
   `;
   twitBot.post('statuses/update', { status }, () => {});
+  return status;
 };

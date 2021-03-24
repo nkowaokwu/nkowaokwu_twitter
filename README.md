@@ -50,6 +50,20 @@ ACCESS_TOKEN=private_access_token
 ACCESS_TOKEN_SECRET=private_access_token_secret
 ```
 
+### Testing
+
+To run tests locally, start the Igbo API:
+
+```
+yarn start:docker
+```
+
+Then in another tab, run the tests:
+
+```
+yarn mocha
+```
+
 ### Semantic Versioning and Commitlint
 
 This project uses [Semantic Versioning](https://semver.org/) and 
