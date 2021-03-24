@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Build and Trigger Deploy
+    runs-on: ubuntu-latest
+      
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js @12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: Build Server
+      run: |
+        yarn install
+        yarn build
