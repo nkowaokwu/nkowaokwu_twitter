@@ -4,13 +4,13 @@
   "description": "Twitter bot for @nkowaokwu",
   "main": "src/server.js",
   "scripts": {
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
     "prepare": "husky install",
     "dev": "cross-env NODE_ENV=development nodemon --exec babel-node -- ./src/server.js",
     "build": "./node_modules/.bin/babel -d build/ ./src -s",
     "start": "node ./build/server.js",
     "start:docker": "docker-compose up",
     "mocha": "cross-env NODE_ENV=test mocha --require @babel/register --timeout 10000 --require esm ./tests",
+    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
     "precommit": "lint-staged"
   },
   "engines": {
@@ -78,6 +78,7 @@
     }
   },
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
     "axios": "^0.21.1",
     "chai": "^4.3.4",
     "chai-http": "^4.3.0",
