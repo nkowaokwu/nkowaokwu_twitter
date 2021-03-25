@@ -1,6 +1,6 @@
 {
   "name": "nkowaokwu_twitter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Twitter bot for @nkowaokwu",
   "main": "src/server.js",
   "scripts": {
