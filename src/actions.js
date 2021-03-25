@@ -33,7 +33,7 @@ export const tweetRandomWord = (twitBot = defaultTwitBot) => async () => {
   }
 
   const status = `
-  Word of the day:
+  Word:
   ${word}
   
   Part of speech:
