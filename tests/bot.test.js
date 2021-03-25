@@ -22,7 +22,7 @@ describe('Twitter bot', () => {
   it('should create random word tweet', (done) => {
     tweetRandomWord()()
       .then((randomWordTweet) => {
-        randomWordTweet.startsWith('Word of the day:');
+        randomWordTweet.startsWith('Word:');
         done();
       });
   });
