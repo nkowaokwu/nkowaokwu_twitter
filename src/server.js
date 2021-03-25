@@ -3,16 +3,23 @@ import Twit from 'twit';
 import cron from 'node-cron';
 import dotenv from 'dotenv';
 import TimeInterval from './constants/TimeInterval';
+import { defaultTwitBot } from './constants/DefaultValues';
 import { tweetRandomWord } from './actions';
 
 dotenv.config();
 
-const twitBot = new Twit({
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET,
-});
+let twitBot;
+// Will fallback on a dummy twitBot if no tokens are provided
+try {
+  twitBot = new Twit({
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET,
+  });
+} catch (err) {
+  twitBot = defaultTwitBot;
+}
 
 const app = express();
 
