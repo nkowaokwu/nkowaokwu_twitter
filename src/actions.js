@@ -1,7 +1,7 @@
 import urlencode from 'urlencode';
 import { truncate } from 'lodash';
 import WordClass from './constants/WordClass';
-import { defaultTwitBot, recordAudioMessage } from './constants/DefaultValues';
+import { defaultTwitBot, recordAudioMessage, substringToTrack } from './constants/DefaultValues';
 import { getRandomWord } from './API';
 
 const MAX_TWEET_LENGTH = 280;
@@ -42,7 +42,7 @@ ${WordClass[wordClass]?.label || wordClass}
 Definition:
 ${definition}
 
-Want to read more or fix an error? Visit Nkọwa okwu:
+${substringToTrack}
 ${url}
 
 #Igbo #LearnIgbo

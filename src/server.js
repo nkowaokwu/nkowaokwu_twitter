@@ -3,7 +3,7 @@ import Twit from 'twit';
 import cron from 'node-cron';
 import dotenv from 'dotenv';
 import TimeInterval from './constants/TimeInterval';
-import { defaultTwitBot } from './constants/DefaultValues';
+import { defaultTwitBot, substringToTrack } from './constants/DefaultValues';
 import { tweetRandomWord, postFollowUpAudioRequest } from './actions';
 
 dotenv.config();
@@ -18,7 +18,7 @@ try {
     access_token: process.env.ACCESS_TOKEN,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
   });
-  stream = twitBot.stream('statuses/filter', { track: 'Want to read more or fix an error? Visit Nkọwa okwu:' });
+  stream = twitBot.stream('statuses/filter', { track: substringToTrack });
 } catch (err) {
   twitBot = defaultTwitBot;
 }
