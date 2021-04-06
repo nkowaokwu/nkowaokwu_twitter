@@ -1,7 +1,7 @@
 import urlencode from 'urlencode';
 import { truncate } from 'lodash';
 import WordClass from './constants/WordClass';
-import { defaultTwitBot } from './constants/DefaultValues';
+import { defaultTwitBot, recordAudioMessage, substringToTrack } from './constants/DefaultValues';
 import { getRandomWord } from './API';
 
 const MAX_TWEET_LENGTH = 280;
@@ -42,11 +42,21 @@ ${WordClass[wordClass]?.label || wordClass}
 Definition:
 ${definition}
 
-Want to read more or fix an error? Visit Nkọwa okwu:
+${substringToTrack}
 ${url}
 
 #Igbo #LearnIgbo
 `;
   executeAction(status, () => twitBot.post('statuses/update', { status }, successfulTweet));
+  return status;
+};
+
+export const postFollowUpAudioRequest = async (id, word, twitBot = defaultTwitBot) => {
+  const status = recordAudioMessage(word);
+  const options = {
+    in_reply_to_status_id: id,
+    status,
+  };
+  executeAction(options.status, () => twitBot.post('statuses/update', options, successfulTweet));
   return status;
 };

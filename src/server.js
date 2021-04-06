@@ -3,12 +3,13 @@ import Twit from 'twit';
 import cron from 'node-cron';
 import dotenv from 'dotenv';
 import TimeInterval from './constants/TimeInterval';
-import { defaultTwitBot } from './constants/DefaultValues';
-import { tweetRandomWord } from './actions';
+import { defaultTwitBot, substringToTrack } from './constants/DefaultValues';
+import { tweetRandomWord, postFollowUpAudioRequest } from './actions';
 
 dotenv.config();
 
 let twitBot;
+let stream;
 // Will fallback on a dummy twitBot if no tokens are provided
 try {
   twitBot = new Twit({
@@ -17,9 +18,20 @@ try {
     access_token: process.env.ACCESS_TOKEN,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
   });
+  stream = twitBot.stream('statuses/filter', { track: substringToTrack });
 } catch (err) {
   twitBot = defaultTwitBot;
 }
+
+stream.on('tweet', (tweet) => {
+  const id = tweet.id_str;
+  const replyCount = tweet.reply_count;
+  const word = tweet.text.split('\n')[1];
+
+  if (tweet.user.id_str === process.env.BOT_ACCOUNT_ID && replyCount === 0) {
+    postFollowUpAudioRequest(id, word, twitBot);
+  }
+});
 
 const app = express();
 
