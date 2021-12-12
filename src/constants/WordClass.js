@@ -7,9 +7,13 @@ export default {
     value: 'ADV',
     label: 'Adverb',
   },
-  CD: {
-    value: 'CD',
-    label: 'Number',
+  AV: {
+    value: 'AV',
+    label: 'Active verb',
+  },
+  PV: {
+    value: 'PV',
+    label: 'Passive verb',
   },
   CJN: {
     value: 'CJN',
@@ -17,15 +21,11 @@ export default {
   },
   DEM: {
     value: 'DEM',
-    label: 'Demonstration',
+    label: 'Demonstrative',
   },
-  FW: {
-    value: 'FW',
-    label: 'Foreign word',
-  },
-  INTJ: {
-    value: 'INTJ',
-    label: 'Interjection',
+  NM: {
+    value: 'NM',
+    label: 'Name',
   },
   NNC: {
     value: 'NNC',
@@ -35,6 +35,10 @@ export default {
     value: 'NNP',
     label: 'Proper noun',
   },
+  CD: {
+    value: 'CD',
+    label: 'Number',
+  },
   PREP: {
     value: 'PREP',
     label: 'Preposition',
@@ -43,20 +47,32 @@ export default {
     value: 'PRN',
     label: 'Pronoun',
   },
+  FW: {
+    value: 'FW',
+    label: 'Foreign word',
+  },
   QTF: {
     value: 'QTF',
-    label: 'Quantifer',
-  },
-  SYM: {
-    value: 'SYM',
-    label: 'Punctuations',
-  },
-  V: {
-    value: 'V',
-    label: 'Verb',
+    label: 'Quantifier',
   },
   WH: {
     value: 'WH',
     label: 'Interrogative',
+  },
+  INTJ: {
+    value: 'INTJ',
+    label: 'Interjection',
+  },
+  ISUF: {
+    value: 'ISUF',
+    label: 'Inflectional suffix',
+  },
+  ESUF: {
+    value: 'ESUF',
+    label: 'Extensional suffix',
+  },
+  SYM: {
+    value: 'SYM',
+    label: 'Punctuations',
   },
 };
