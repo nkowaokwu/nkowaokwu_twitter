@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { tweetRandomWord, postFollowUpAudioRequest } from '../src/actions';
+import { tweetRandomWord } from '../src/actions';
 
 describe('Twitter bot', () => {
   before(function (done) {
@@ -14,8 +14,9 @@ describe('Twitter bot', () => {
          */
         setTimeout(done, 10000);
       })
-      .catch(() => {
+      .catch((err) => {
         console.log('🛑 Seeding unsuccessful');
+        console.log(err);
       });
   });
 
@@ -23,14 +24,6 @@ describe('Twitter bot', () => {
     tweetRandomWord()()
       .then((randomWordTweet) => {
         randomWordTweet.startsWith('Word:');
-        done();
-      });
-  });
-
-  it('should create random follow up tweet for audio request', (done) => {
-    postFollowUpAudioRequest('12345', 'testWord')
-      .then((followUpTweet) => {
-        followUpTweet.includes('testWord');
         done();
       });
   });
