@@ -1,7 +1,5 @@
-const EVERY_TWO_HOUR = '0 */2 * * *';
-const EVERY_SIX_HOURS = '0 */6 * * *';
+const EVERY_TWENTY_FOUR_HOURS = '0 8 * * *';
 
 export default {
-  EVERY_TWO_HOUR,
-  EVERY_SIX_HOURS,
+  EVERY_TWENTY_FOUR_HOURS,
 };
