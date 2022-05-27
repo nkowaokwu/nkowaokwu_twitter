@@ -7,7 +7,13 @@ import { getRandomWord } from './API';
 const MAX_TWEET_LENGTH = 280;
 const NKOWAOKWU = 'https://nkowaokwu.com/word';
 
-const successfulTweet = () => console.log('Successful tweet 🐦');
+const handleResponse = (err) => {
+  if (!err) {
+    console.log('Successful tweet 🐦');
+  } else {
+    console.log(err);
+  }
+};
 
 /* Checks the status length before sending tweet */
 const executeAction = (status, cb) => {
@@ -47,6 +53,6 @@ ${url}
 
 #Igbo #LearnIgbo
 `;
-  executeAction(status, () => twitBot.post('statuses/update', { status }, successfulTweet));
+  executeAction(status, () => twitBot.post('statuses/update', { status }, handleResponse));
   return status;
 };
