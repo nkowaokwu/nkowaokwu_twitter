@@ -24,7 +24,7 @@ const getRandomNumberInRange = (min, max) => Math.floor(Math.random() * (max - m
  */
 export const getRandomWord = async () => {
   const method = 'get';
-  const url = `${IGBO_API}/words`;
+  const url = `${IGBO_API}/words?isStandardIgbo=true&pronunciation=true`;
 
   try {
     const res = await request({
